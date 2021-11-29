@@ -353,10 +353,6 @@ button {
   padding-top: calc(340px + 10px);
 }
 
-.film-card__link:hover {
-  opacity: 1;
-}
-
 .film-card__title,
 .film-card__rating {
   display: inline;
