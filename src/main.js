@@ -62,9 +62,9 @@ if (films.length > FILM_COUNT_PER_STEP) {
 
 }
 
-const siteFooterStatisticks = document.querySelector('.footer__statistics');
+const siteFooterStatistics = document.querySelector('.footer__statistics');
 
-render(siteFooterStatisticks, createFooterStatisticsTemplate(generateStatsMockInfo()), 'beforeend');
+render(siteFooterStatistics, createFooterStatisticsTemplate(generateStatsMockInfo()), 'beforeend');
 
 const siteBody = document.querySelector('.footer');
 
