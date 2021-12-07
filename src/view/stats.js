@@ -1,4 +1,6 @@
-export const createSiteStatisticsTemplate = (stats) => (
+import {createElement} from '../render.js';
+
+const createSiteStatisticsTemplate = (stats) => (
   `<section class="statistic">
     <p class="statistic__rank">
       Your rank
@@ -37,3 +39,28 @@ export const createSiteStatisticsTemplate = (stats) => (
     </div>
   </section>`
 );
+
+export default class SiteStatisticsView {
+  #element = null;
+  #stats = null;
+
+  constructor(stats) {
+    this.#stats = stats;
+  }
+
+  get template() {
+    return createSiteStatisticsTemplate(this.#stats);
+  }
+
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
+    }
+
+    return this.#element;
+  }
+
+  removeElement() {
+    this.#element = null;
+  }
+}

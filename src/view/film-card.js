@@ -1,4 +1,6 @@
-export  const createSiteFilmCardTemplate = (film) => (
+import {createElement} from '../render.js';
+
+const createSiteFilmCardTemplate = (film) => (
   `<article class="film-card">
     <h3 class="film-card__title">${film.title}</h3>
     <p class="film-card__rating">${film.rating}</p>
@@ -17,3 +19,29 @@ export  const createSiteFilmCardTemplate = (film) => (
     </div>
   </article>`
 );
+
+
+export default class SiteFilmCardView {
+  #element = null;
+  #film = null;
+
+  constructor(film) {
+    this.#film = film;
+  }
+
+  get template() {
+    return createSiteFilmCardTemplate (this.#film);
+  }
+
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
+    }
+
+    return this.#element;
+  }
+
+  removeElement() {
+    this.#element = null;
+  }
+}

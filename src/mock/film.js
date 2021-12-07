@@ -1,9 +1,6 @@
+
 import dayjs from 'dayjs';
-import {getRandomInteger}  from '../utils/utils.js';
-import {getRandomPositiveFloat}  from '../utils/utils.js';
-import {generateFixDurationTime}  from '../utils/utils.js';
-import {generateRandomArrayElement}  from '../utils/utils.js';
-import {getRandomBoolean} from '../utils/utils.js';
+import {getRandomInteger, getRandomPositiveFloat, generateFixDurationTime, generateRanromArrayElement, getRandomBoolean} from '../utils/utils.js';
 
 const MAX_RATING_VALUE = 10;
 const MIN_FILM_YEAR = 1930;
@@ -23,7 +20,7 @@ const generateDescription = () => {
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra. Nullam nunc ex, convallis sed finibus eget, sollicitudin eget ante.',
   ];
 
-  return generateRandomArrayElement(descriptions);
+  return generateRanromArrayElement(descriptions);
 
 };
 
@@ -38,7 +35,7 @@ const generateFilmPoster = () => {
     './images/posters/the-great-flamarion.jpg',
   ];
 
-  return generateRandomArrayElement(posters);
+  return generateRanromArrayElement(posters);
 };
 
 const generateFilmTitle = () => {
@@ -54,7 +51,7 @@ const generateFilmTitle = () => {
     'Made for Each Other',
   ];
 
-  return generateRandomArrayElement(titles);
+  return generateRanromArrayElement(titles);
 };
 
 export const generateGenre = () => {
@@ -69,7 +66,7 @@ export const generateGenre = () => {
     'Thriller',
   ];
 
-  return generateRandomArrayElement(genres);
+  return generateRanromArrayElement(genres);
 };
 
 const generateCardActiveModifier = () => {
@@ -95,7 +92,7 @@ const generateDirector = () => {
     'David Cronenberg',
   ];
 
-  return generateRandomArrayElement(directors);
+  return generateRanromArrayElement(directors);
 };
 
 const generateWriters = () => {
@@ -105,7 +102,7 @@ const generateWriters = () => {
     'Charles Dickens',
     'George Orwell',
   ];
-  return generateRandomArrayElement(writers);
+  return generateRanromArrayElement(writers);
 };
 
 const generateActors = () => {
@@ -114,7 +111,7 @@ const generateActors = () => {
     'Marlon Brando, Richard Burton',
     'Richard Burton, James Cagney',
   ];
-  return generateRandomArrayElement(actors);
+  return generateRanromArrayElement(actors);
 };
 
 const generateCountry = () => {
@@ -125,7 +122,7 @@ const generateCountry = () => {
     'Italy',
     'Ireland',
   ];
-  return generateRandomArrayElement(countries);
+  return generateRanromArrayElement(countries);
 };
 
 const ageRating = () => {
@@ -135,7 +132,7 @@ const ageRating = () => {
     '12+',
     '18+',
   ];
-  return generateRandomArrayElement(ratingParameters);
+  return generateRanromArrayElement(ratingParameters);
 };
 
 export const generateFilmMockInfo = () => ({

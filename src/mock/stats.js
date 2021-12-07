@@ -1,6 +1,6 @@
 import {getRandomInteger} from '../utils/utils.js';
-import {generateGenre} from './film.js';
-import {formatNumberWithSpaces} from '../utils/utils.js';
+import { generateGenre } from './film.js';
+import { formatNumberWithSpaces } from '../utils/utils.js';
 
 const MIN_WATCHED_FILMS_VALUE = 3;
 const MAX_WATCHED_FILMS_VALUE = 100;

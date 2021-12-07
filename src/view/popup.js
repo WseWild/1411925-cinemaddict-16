@@ -1,4 +1,6 @@
-export const createSiteFilmPopup = (film) => (
+import {createElement} from '../render.js';
+
+const createSiteFilmPopup = (film) => (
   `<section class="film-details">
     <form class="film-details__inner" action="" method="get">
       <div class="film-details__top-container">
@@ -69,3 +71,28 @@ export const createSiteFilmPopup = (film) => (
     </form>
   </section>`
 );
+
+export default class SiteFilmPopupView {
+  #element = null;
+  #film = null;
+
+  constructor(film) {
+    this.#film = film;
+  }
+
+  get template() {
+    return createSiteFilmPopup(this.#film);
+  }
+
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
+    }
+
+    return this.#element;
+  }
+
+  removeElement() {
+    this.#element = null;
+  }
+}
