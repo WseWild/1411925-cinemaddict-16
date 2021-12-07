@@ -1,6 +1,8 @@
 import {generateFilmMockInfo} from './mock/film.js';
 import {generateStatsMockInfo} from './mock/stats.js';
 import {generateFiltersMockInfo} from './mock/filters.js';
+import {renderElement} from './render';
+import {RenderPosition} from './render';
 import SiteProfileView from './view/profile.js';
 import SiteNavMenuView from './view/main-nav.js';
 import SiteStatisticsView from './view/stats.js';
@@ -11,7 +13,7 @@ import ShowMoreBtnView from './view/show-more-btn.js';
 import SiteLoadingStateView from './view/loading-state.js';
 import SiteFilmPopupView from './view/popup.js';
 import FooterStatisticsView from './view/footer-stats.js';
-import {RenderPosition, renderElement} from './render';
+
 
 const FILM_COUNT = 15;
 const FILM_COUNT_PER_STEP = 5;
@@ -110,6 +112,6 @@ if (films.length > FILM_COUNT_PER_STEP) {
 
 }
 
-const siteFooterStatisticks = document.querySelector('.footer__statistics');
+const siteFooterStatistics = document.querySelector('.footer__statistics');
 
-renderElement(siteFooterStatisticks, new FooterStatisticsView(generateStatsMockInfo()).element, RenderPosition.BEFOREEND);
+renderElement(siteFooterStatistics, new FooterStatisticsView(generateStatsMockInfo()).element, RenderPosition.BEFOREEND);

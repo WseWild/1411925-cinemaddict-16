@@ -23,7 +23,7 @@ export  const generateFixDurationTime = (totalMinutes) => {
 };
 
 
-export const generateRanromArrayElement = (array) => {
+export const generateRandomArrayElement = (array) => {
   const randomIndex = getRandomInteger(0, array.length - 1);
   return array[randomIndex];
 };
