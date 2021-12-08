@@ -22,7 +22,6 @@ export  const generateFixDurationTime = (totalMinutes) => {
   return hours + mins;
 };
 
-
 export const generateRandomArrayElement = (array) => {
   const randomIndex = getRandomInteger(0, array.length - 1);
   return array[randomIndex];
@@ -31,3 +30,15 @@ export const generateRandomArrayElement = (array) => {
 export const getRandomBoolean = () =>  Boolean(getRandomInteger(0, 1));
 
 export const  formatNumberWithSpaces = (num) =>  num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+
+export const isEscapeEvent = (evt) =>
+{
+  const result = Boolean(evt.key === 'Escape');
+  return result;
+};
+
+export const isEscEvent = (evt) =>
+{
+  const result =  Boolean (evt.key === 'Esc');
+  return result;
+};

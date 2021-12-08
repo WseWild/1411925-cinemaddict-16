@@ -7,7 +7,7 @@ const createSiteProfileTemplate = () => (
   </section>`
 );
 
-export default class SiteProfileView {
+export default class ProfileView {
   #element = null;
 
   get template() {

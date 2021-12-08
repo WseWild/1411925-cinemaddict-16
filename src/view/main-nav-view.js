@@ -12,7 +12,7 @@ export const createSiteNavMenuTemplate = (filters) => (
   </nav>`
 );
 
-export default class SiteNavMenuView {
+export default class NavMenuView {
   #filters = null;
   #element = null;
 

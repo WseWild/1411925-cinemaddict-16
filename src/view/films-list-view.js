@@ -9,7 +9,7 @@ const createSiteFilmsTemplate = () => (
   </section>`
 );
 
-export default class SiteFilmsListView {
+export default class FilmsListView {
   #element = null;
 
 

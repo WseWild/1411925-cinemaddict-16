@@ -40,7 +40,7 @@ const createSiteStatisticsTemplate = (stats) => (
   </section>`
 );
 
-export default class SiteStatisticsView {
+export default class StatisticsView {
   #element = null;
   #stats = null;
 

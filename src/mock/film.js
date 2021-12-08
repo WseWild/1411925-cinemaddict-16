@@ -1,19 +1,17 @@
-
 import dayjs from 'dayjs';
-import {getRandomInteger}  from '../utils/utils.js';
-import {getRandomPositiveFloat}  from '../utils/utils.js';
 import {generateFixDurationTime}  from '../utils/utils.js';
 import {generateRandomArrayElement}  from '../utils/utils.js';
 import {getRandomBoolean} from '../utils/utils.js';
+import {getRandomInteger}  from '../utils/utils.js';
+import {getRandomPositiveFloat}  from '../utils/utils.js';
 
-const MAX_RATING_VALUE = 10;
-const MIN_FILM_YEAR = 1930;
-const MAX_FILM_YEAR = 2021;
 const LAST_MONTH_DAY = 31;
 const MAX_COMMENT_VALUE =5;
-const MIN_FILM_DURATION_VALUE = 30;
 const MAX_FILM_DURATION_VALUE = 230;
-
+const MAX_FILM_YEAR = 2021;
+const MAX_RATING_VALUE = 10;
+const MIN_FILM_DURATION_VALUE = 30;
+const MIN_FILM_YEAR = 1930;
 
 const generateDescription = () => {
   const descriptions = [

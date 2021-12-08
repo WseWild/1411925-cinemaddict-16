@@ -72,7 +72,7 @@ const createSiteFilmPopup = (film) => (
   </section>`
 );
 
-export default class SiteFilmPopupView {
+export default class FilmPopupView {
   #element = null;
   #film = null;
 

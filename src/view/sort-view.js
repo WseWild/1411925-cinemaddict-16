@@ -8,7 +8,7 @@ const createSiteSortTemplate = () => (
   </ul>`
 );
 
-export default class SiteSortView {
+export default class SortView {
   #element = null;
 
   get template() {
