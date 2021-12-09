@@ -1,13 +1,13 @@
-import {getRandomInteger} from '../utils/utils.js';
-import {generateGenre} from './film.js';
 import {formatNumberWithSpaces} from '../utils/utils.js';
+import {generateGenre} from './film.js';
+import {getRandomInteger} from '../utils/utils.js';
 
-const MIN_WATCHED_FILMS_VALUE = 3;
+const MAX_TOTAL_DURATION_HOURS_VALUE = 300;
+const MAX_TOTAL_MOVIES_VALUE = 260000;
 const MAX_WATCHED_FILMS_VALUE = 100;
 const MIN_TOTAL_DURATION_HOURS_VALUE = 10;
-const MAX_TOTAL_DURATION_HOURS_VALUE = 300;
 const MIN_TOTAL_MOVIES_VALUE = 160000;
-const MAX_TOTAL_MOVIES_VALUE = 260000;
+const MIN_WATCHED_FILMS_VALUE = 3;
 
 const getTotalMoviesNumber = (min, max) => {
   const generateNumber = getRandomInteger(min, max);

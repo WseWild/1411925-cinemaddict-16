@@ -1,3 +1,5 @@
+import {createElement} from '../render.js';
+
 export const createSiteNavMenuTemplate = (filters) => (
   `<nav class="main-navigation">
     <div class="main-navigation__items">
@@ -9,3 +11,28 @@ export const createSiteNavMenuTemplate = (filters) => (
     <a href="#stats" class="main-navigation__additional">Stats</a>
   </nav>`
 );
+
+export default class NavMenuView {
+  #filters = null;
+  #element = null;
+
+  constructor(filters) {
+    this.#filters = filters;
+  }
+
+  get template() {
+    return createSiteNavMenuTemplate(this.#filters);
+  }
+
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
+    }
+
+    return this.#element;
+  }
+
+  removeElement() {
+    this.#element = null;
+  }
+}
