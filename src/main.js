@@ -2,6 +2,7 @@ import FilmCardView from './view/site-film-card-view.js';
 import FilmPopupView from './view/film-popup-view.js';
 import FilmsListView from './view/films-list-view.js';
 import FooterStatisticsView from './view/footer-statistics-view.js';
+import ListEmptyView from './view/list-empty';
 import LoadingStateView from './view/loading-state-view.js';
 import NavMenuView from './view/main-nav-view.js';
 import ProfileView from './view/profile-view.js';
@@ -16,7 +17,7 @@ import {generateStatsMockInfo} from './mock/stats.js';
 import {isEscEvent} from './utils/utils.js';
 import {isEscapeEvent} from './utils/utils.js';
 
-const FILM_COUNT = 15;
+const FILM_COUNT = 0;
 const FILM_COUNT_PER_STEP = 5;
 
 
@@ -89,9 +90,12 @@ const renderFilmCard = (filmListElement, film) => {
 
 const siteFilms = siteMainElement.querySelector('.films');
 
-for (let num = 0; num < Math.min(films.length, FILM_COUNT_PER_STEP); num++) {
+if (films.every) {
+  renderElement(siteFilms,new ListEmptyView().element, RenderPosition.BEFOREEND);
+
+} else {for (let num = 0; num < Math.min(films.length, FILM_COUNT_PER_STEP); num++) {
   renderFilmCard(siteFilmsContainer[0], films[num]);
-}
+}}
 
 if (films.length > FILM_COUNT_PER_STEP) {
   let renderedFilmCount = FILM_COUNT_PER_STEP;
