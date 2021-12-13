@@ -2,7 +2,7 @@ import FilmCardView from './view/site-film-card-view.js';
 import FilmPopupView from './view/film-popup-view.js';
 import FilmsListView from './view/films-list-view.js';
 import FooterStatisticsView from './view/footer-statistics-view.js';
-import ListEmptyView from './view/list-empty';
+import ListEmptyView from './view/list-empty-view';
 import LoadingStateView from './view/loading-state-view.js';
 import NavMenuView from './view/main-nav-view.js';
 import ProfileView from './view/profile-view.js';
