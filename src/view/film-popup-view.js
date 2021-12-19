@@ -1,4 +1,4 @@
-import {createElement} from '../render.js';
+import AbstractView from './abstract-view.js';
 
 const createSiteFilmPopup = (film) => (
   `<section class="film-details">
@@ -72,11 +72,11 @@ const createSiteFilmPopup = (film) => (
   </section>`
 );
 
-export default class FilmPopupView {
-  #element = null;
+export default class FilmPopupView extends AbstractView {
   #film = null;
 
   constructor(film) {
+    super();
     this.#film = film;
   }
 
@@ -84,15 +84,14 @@ export default class FilmPopupView {
     return createSiteFilmPopup(this.#film);
   }
 
-  get element() {
-    if (!this.#element) {
-      this.#element = createElement(this.template);
-    }
-
-    return this.#element;
+  #clickHandler = (evt) => {
+    evt.preventDefault();
+    this._callback.click();
   }
 
-  removeElement() {
-    this.#element = null;
+  setClickHandler(callback) {
+    this._callback.click = callback;
+    this.element.addEventListener('click', this.#clickHandler);
   }
+
 }
