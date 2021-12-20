@@ -17,7 +17,7 @@ import {generateStatsMockInfo} from './mock/stats.js';
 import {isEscEvent} from './utils/utils.js';
 import {isEscapeEvent} from './utils/utils.js';
 
-const FILM_COUNT = 0;
+const FILM_COUNT = 15;
 const FILM_COUNT_PER_STEP = 5;
 
 
@@ -41,10 +41,6 @@ const siteFooter = document.querySelector('.footer');
 const renderFilmCard = (filmListElement, film) => {
   const filmComponent = new FilmCardView(film);
   const filmComponentPopup = new FilmPopupView(film);
-  const filmComponentPoster = filmComponent.element.querySelector('.film-card__poster');
-  const filmComponentTitle =  filmComponent.element.querySelector('.film-card__title');
-  const filmComponentComment =  filmComponent.element.querySelector('.film-card__comments');
-  const filmPopupCrossBtn =  filmComponentPopup.element.querySelector('.film-details__close-btn');
 
   const openPopup = () => {
     siteBodyElement.classList.add('hide-overflow');
@@ -68,20 +64,12 @@ const renderFilmCard = (filmListElement, film) => {
     document.addEventListener('keydown', onEscKeyDown);
   };
 
-  filmComponentPoster.addEventListener('click',() =>{
+  filmComponent.setClickHandler(() => {
     openPopup();
     closePopupWithEsc();
   });
 
-  filmComponentTitle.addEventListener('click',() =>{
-    openPopup();
-    closePopupWithEsc();
-  });
-  filmComponentComment.addEventListener('click',() =>{
-    openPopup();
-    closePopupWithEsc();
-  });
-  filmPopupCrossBtn.addEventListener('click', () =>{
+  filmComponentPopup.setClickHandler(() => {
     closePopup();
   });
 
@@ -90,7 +78,7 @@ const renderFilmCard = (filmListElement, film) => {
 
 const siteFilms = siteMainElement.querySelector('.films');
 
-if (films.every) {
+if (films.length === 0) {
   renderElement(siteFilms,new ListEmptyView().element, RenderPosition.BEFOREEND);
 
 } else {for (let num = 0; num < Math.min(films.length, FILM_COUNT_PER_STEP); num++) {
@@ -100,18 +88,19 @@ if (films.every) {
 if (films.length > FILM_COUNT_PER_STEP) {
   let renderedFilmCount = FILM_COUNT_PER_STEP;
 
-  renderElement(siteFilms,new ShowMoreBtnView().element, RenderPosition.BEFOREEND);
+  const showMoreButtonComponent = new ShowMoreBtnView();
 
-  const showMoreButton = siteMainElement.querySelector('.films-list__show-more');
+  renderElement(siteFilms,showMoreButtonComponent.element, RenderPosition.BEFOREEND);
 
-  showMoreButton.addEventListener('click', (evt) => {
+  showMoreButtonComponent.setClickHandler(() =>  {
 
-    evt.preventDefault();
+
     films.slice(renderedFilmCount, renderedFilmCount + FILM_COUNT_PER_STEP).forEach((film) => renderFilmCard(siteFilmsContainer[0], film));
     renderedFilmCount += FILM_COUNT_PER_STEP;
 
     if (renderedFilmCount >= films.length) {
-      showMoreButton.remove();
+      showMoreButtonComponent.removeElement();
+
     }
   });
 

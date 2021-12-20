@@ -1,24 +1,12 @@
-import {createElement} from '../render.js';
+import AbstractView from './abstract-view.js';
 
 const createSiteLoadingStateTemplate = () => ( '<h2 class="films-list__title">Loading...</h2>');
 
-export default class LoadingStateView {
-  #element = null;
+export default class LoadingStateView extends AbstractView {
 
   get template() {
     return createSiteLoadingStateTemplate();
   }
 
-  get element() {
-    if (!this.#element) {
-      this.#element = createElement(this.template);
-    }
-
-    return this.#element;
-  }
-
-  removeElement() {
-    this.#element = null;
-  }
 }
 

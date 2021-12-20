@@ -1,4 +1,4 @@
-import {createElement} from '../render.js';
+import AbstractView from './abstract-view.js';
 
 const createSiteStatisticsTemplate = (stats) => (
   `<section class="statistic">
@@ -40,11 +40,11 @@ const createSiteStatisticsTemplate = (stats) => (
   </section>`
 );
 
-export default class StatisticsView {
-  #element = null;
+export default class StatisticsView extends AbstractView {
   #stats = null;
 
   constructor(stats) {
+    super();
     this.#stats = stats;
   }
 
@@ -52,15 +52,4 @@ export default class StatisticsView {
     return createSiteStatisticsTemplate(this.#stats);
   }
 
-  get element() {
-    if (!this.#element) {
-      this.#element = createElement(this.template);
-    }
-
-    return this.#element;
-  }
-
-  removeElement() {
-    this.#element = null;
-  }
 }
