@@ -27,8 +27,6 @@ export const generateRandomArrayElement = (array) => {
   return array[randomIndex];
 };
 
-export const getRandomBoolean = () =>  Boolean(getRandomInteger(0, 1));
-
 export const  formatNumberWithSpaces = (num) =>  num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
 export const isEscapeEvent = (evt) =>
@@ -41,4 +39,18 @@ export const isEscEvent = (evt) =>
 {
   const result =  Boolean (evt.key === 'Esc');
   return result;
+};
+
+export const updateItem = (items, update) => {
+  const index = items.findIndex((item) => item.id === update.id);
+
+  if (index === -1) {
+    return items;
+  }
+
+  return [
+    ...items.slice(0, index),
+    update,
+    ...items.slice(index + 1),
+  ];
 };

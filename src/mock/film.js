@@ -1,9 +1,10 @@
 import dayjs from 'dayjs';
 import {generateFixDurationTime}  from '../utils/utils.js';
 import {generateRandomArrayElement}  from '../utils/utils.js';
-import {getRandomBoolean} from '../utils/utils.js';
+// import {getRandomBoolean} from '../utils/utils.js';
 import {getRandomInteger}  from '../utils/utils.js';
 import {getRandomPositiveFloat}  from '../utils/utils.js';
+import {nanoid} from 'nanoid';
 
 const LAST_MONTH_DAY = 31;
 const MAX_COMMENT_VALUE =5;
@@ -71,18 +72,6 @@ export const generateGenre = () => {
   return generateRandomArrayElement(genres);
 };
 
-const generateCardActiveModifier = () => {
-  if (getRandomBoolean()) {
-    return 'film-card__controls-item--active';
-  }
-};
-
-const generatePopupActiveModifier = () => {
-  if (getRandomBoolean()) {
-    return 'film-details__control-button--active';
-  }
-};
-
 const generateDirector = () => {
   const directors = [
     'David Fincher',
@@ -138,6 +127,7 @@ const ageRating = () => {
 };
 
 export const generateFilmMockInfo = () => ({
+  id: nanoid(),
   poster: generateFilmPoster(),
   title:  generateFilmTitle(),
   director: generateDirector(),
@@ -152,12 +142,12 @@ export const generateFilmMockInfo = () => ({
   description: generateDescription(),
   country: generateCountry(),
   numOfComments: getRandomInteger(0, MAX_COMMENT_VALUE),
-  isWatchList: generateCardActiveModifier(),
-  isWatched: generateCardActiveModifier(),
-  isFavorites: generateCardActiveModifier(),
-  popupIsWatchList: generatePopupActiveModifier(),
-  popupIsWatched: generatePopupActiveModifier(),
-  popupIsFavorites: generatePopupActiveModifier(),
+  isWatchList: Boolean(getRandomInteger(0, 1)),
+  isWatched: Boolean(getRandomInteger(0, 1)),
+  isFavorites: Boolean(getRandomInteger(0, 1)),
+  popupIsWatchList: Boolean(getRandomInteger(0, 1)),
+  popupIsWatched: Boolean(getRandomInteger(0, 1)),
+  popupIsFavorites: Boolean(getRandomInteger(0, 1)),
   releaseDate: dayjs().year(getRandomInteger(MIN_FILM_YEAR, MAX_FILM_YEAR)).day(getRandomInteger(1, LAST_MONTH_DAY)).format('DD MMM YYYY'),
 });
 
