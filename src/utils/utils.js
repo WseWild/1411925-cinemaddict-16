@@ -54,3 +54,7 @@ export const updateItem = (items, update) => {
     ...items.slice(index + 1),
   ];
 };
+
+export const sortFilmsByDate =  (a, b) =>  (a.productionYear < b.productionYear) ? 1 : -1;
+
+export const sortFilmsByRating = (a, b) => (a.rating < b.rating) ? 1: -1;
