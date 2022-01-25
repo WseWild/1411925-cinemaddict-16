@@ -26,17 +26,20 @@ export default class MovieListPresenter  {
 
   #currentSortType = SortType.DEFAULT;
   #filmCards = [];
+  #filmComments = [];
   #moviePresenter = new Map();
   #renderedFilmCount = FILM_COUNT_PER_STEP;
+
   #sourcedBoardFilms = [];
 
   constructor(filmsListContainer) {
     this.#filmsListContainer = filmsListContainer;
   }
 
-  init = (filmCards) => {
+  init = (filmCards, comments) => {
     this.#filmCards = [...filmCards];
     this.#sourcedBoardFilms = [...filmCards];
+    this.#filmComments = [...comments];
 
     render(this.#filmsListContainer, this.#filmsComponent.element, RenderPosition.BEFOREEND);
     render(this.#filmsComponent.element, this.#filmsListComponent.element, RenderPosition.BEFOREEND);
@@ -79,14 +82,16 @@ export default class MovieListPresenter  {
     this.#moviePresenter.forEach((presenter) => presenter.resetView());
   }
 
-  #renderFilmCard = (film) => {
+  #renderFilmCard = (film, filmComments) => {
     const moviePresenter = new MoviePresenter(this.#filmsListContainerComponent, this.#handleFilmChange, this.#handleModeChange);
-    moviePresenter.init(film);
+    moviePresenter.init(film, filmComments);
     this.#moviePresenter.set(film.id, moviePresenter);
   }
 
   #renderFilmCards = (from, to) => {
-    this.#filmCards.slice(from, to).forEach((film) => this.#renderFilmCard(film));
+    const filmComments = this.#filmComments.slice(from, to);
+    this.#filmCards.slice(from, to).forEach((film, i) => this.#renderFilmCard(film, filmComments[i]));
+
   }
 
   #handleSortTypeChange = (sortType) => {

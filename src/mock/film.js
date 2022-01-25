@@ -1,7 +1,6 @@
 import dayjs from 'dayjs';
 import {generateFixDurationTime}  from '../utils/utils.js';
 import {generateRandomArrayElement}  from '../utils/utils.js';
-// import {getRandomBoolean} from '../utils/utils.js';
 import {getRandomInteger}  from '../utils/utils.js';
 import {getRandomPositiveFloat}  from '../utils/utils.js';
 import {nanoid} from 'nanoid';
@@ -126,6 +125,7 @@ const ageRating = () => {
   return generateRandomArrayElement(ratingParameters);
 };
 
+
 export const generateFilmMockInfo = () => ({
   id: nanoid(),
   poster: generateFilmPoster(),
@@ -150,5 +150,3 @@ export const generateFilmMockInfo = () => ({
   popupIsFavorites: Boolean(getRandomInteger(0, 1)),
   releaseDate: dayjs().year(getRandomInteger(MIN_FILM_YEAR, MAX_FILM_YEAR)).day(getRandomInteger(1, LAST_MONTH_DAY)).format('DD MMM YYYY'),
 });
-
-
